@@ -25,17 +25,19 @@ $result = $conn->query($sql_select);
         .container {
             max-width: 100vw;
             margin: auto;
-            background: #dcdce9ff;
+            background: #ffffffff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
         }
 
         h1 {
             text-align: center;
+            border-bottom: 1px solid #818080ff;
+            color: #000000;
         }
 
-        h1,
+
         h2 {
             color: #000000;
 
@@ -43,7 +45,8 @@ $result = $conn->query($sql_select);
 
         .solicitacao-atual {
             text-align: center;
-            color: #000000
+            color: #000000;
+            border-bottom: 1px solid #818080ff;
         }
 
         form {
@@ -65,8 +68,9 @@ $result = $conn->query($sql_select);
             width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 10px;
-            border: 1px solid #ddd;
+            border: 2px solid #ddd;
             border-radius: 4px;
+            box-shadow: 3px 3px 8px rgba(10, 1, 61, 0.4);
         }
 
         button {
