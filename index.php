@@ -68,8 +68,9 @@ $result = $conn->query($sql_select);
             width: calc(100% - 22px);
             padding: 10px;
             margin-bottom: 10px;
-            border: 2px solid #ddd;
+            border: 1px solid #ddd;
             border-radius: 4px;
+            background-color: rgba(185, 182, 221, 0.5);
             box-shadow: 3px 3px 8px rgba(10, 1, 61, 0.4);
         }
 
