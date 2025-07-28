@@ -218,7 +218,7 @@ $result = $conn->query($sql_select);
                 <thead>
                     <tr>
                         <th>ID</th>
-                        <th>Cliente</th>
+                        <th>Solicitante</th>
                         <th>Equipamento</th>
                         <th>Problema</th>
                         <th>Status</th>
