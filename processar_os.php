@@ -6,12 +6,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
 
     switch ($acao) {
         case 'adicionar':
-            if (isset($_POST['cliente']) && isset($_POST['equipamento']) && isset($_POST['descricao_problema'])) {
+            // **Verifica se os novos campos estão presentes no POST**
+            if (isset($_POST['cliente']) && isset($_POST['equipamento']) && isset($_POST['descricao_problema']) && isset($_POST['setor']) && isset($_POST['prioridade'])) {
                 $cliente = $conn->real_escape_string($_POST['cliente']);
                 $equipamento = $conn->real_escape_string($_POST['equipamento']);
                 $descricao_problema = $conn->real_escape_string($_POST['descricao_problema']);
+                // **Captura os novos campos**
+                $setor = $conn->real_escape_string($_POST['setor']);
+                $prioridade = $conn->real_escape_string($_POST['prioridade']);
 
-                $sql_insert = "INSERT INTO ordens_servico (cliente, equipamento, descricao_problema) VALUES ('$cliente', '$equipamento', '$descricao_problema')";
+                // **Atualiza a query SQL para incluir os novos campos**
+                $sql_insert = "INSERT INTO ordens_servico (cliente, setor, equipamento, prioridade, descricao_problema) VALUES ('$cliente', '$setor', '$equipamento', '$prioridade', '$descricao_problema')";
 
                 if ($conn->query($sql_insert) === TRUE) {
                     header("Location: index.php?status=success_add");
@@ -25,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
 
         case 'atualizar_status':
             if (isset($_POST['id_os']) && isset($_POST['novo_status'])) {
-                $id_os = (int)$_POST['id_os'];
+                $id_os = (int) $_POST['id_os'];
                 $novo_status = $conn->real_escape_string($_POST['novo_status']);
 
                 $update_sql = "UPDATE ordens_servico SET status = '$novo_status'";
@@ -49,14 +54,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
             break;
 
         case 'editar':
-            if (isset($_POST['id_os']) && isset($_POST['cliente']) && isset($_POST['equipamento']) && isset($_POST['descricao_problema']) && isset($_POST['status'])) {
-                $id_os = (int)$_POST['id_os'];
+            // **Verifica se os novos campos estão presentes no POST para a edição**
+            if (isset($_POST['id_os']) && isset($_POST['cliente']) && isset($_POST['setor']) && isset($_POST['equipamento']) && isset($_POST['prioridade']) && isset($_POST['descricao_problema']) && isset($_POST['status'])) {
+                $id_os = (int) $_POST['id_os'];
                 $cliente = $conn->real_escape_string($_POST['cliente']);
+                // **Captura os novos campos para edição**
+                $setor = $conn->real_escape_string($_POST['setor']);
                 $equipamento = $conn->real_escape_string($_POST['equipamento']);
+                $prioridade = $conn->real_escape_string($_POST['prioridade']);
                 $descricao_problema = $conn->real_escape_string($_POST['descricao_problema']);
                 $status = $conn->real_escape_string($_POST['status']);
 
-                $update_sql = "UPDATE ordens_servico SET cliente = '$cliente', equipamento = '$equipamento', descricao_problema = '$descricao_problema', status = '$status'";
+                // **Atualiza a query SQL para incluir os novos campos na edição**
+                $update_sql = "UPDATE ordens_servico SET cliente = '$cliente', setor = '$setor', equipamento = '$equipamento', prioridade = '$prioridade', descricao_problema = '$descricao_problema', status = '$status'";
 
                 // Lógica para data_conclusao ao editar
                 if ($status == 'Concluída') {
@@ -86,7 +96,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
 
         case 'excluir':
             if (isset($_GET['id'])) {
-                $id_os = (int)$_GET['id'];
+                $id_os = (int) $_GET['id'];
                 $sql_delete = "DELETE FROM ordens_servico WHERE id = $id_os";
 
                 if ($conn->query($sql_delete) === TRUE) {
