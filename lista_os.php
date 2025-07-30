@@ -29,6 +29,7 @@ $result = $conn->query($sql_select);
 
     .container {
       max-width: 100vw;
+      height: 80vh;
       margin: auto;
       background: #ffffffff;
       padding: 20px;

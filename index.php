@@ -28,10 +28,12 @@ include 'conexao.php';
 
         .container {
             max-width: 80vw;
+            height: 80vh;
             margin: auto;
             background: #ffffffff;
-            padding: 20px;
+            padding: 50px;
             border-radius: 8px;
+
 
         }
 
@@ -66,10 +68,21 @@ include 'conexao.php';
         }
 
         input[type="text"],
-        textarea,
         select {
             text-transform: uppercase;
             width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: rgba(185, 182, 221, 0.5);
+            box-shadow: 3px 3px 8px rgba(10, 1, 61, 0.4);
+        }
+
+        textarea {
+            text-transform: uppercase;
+            width: calc(100% - 22px);
+            height: 150px;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
@@ -104,7 +117,7 @@ include 'conexao.php';
             /* Alinha verticalmente no centro */
             gap: 20px;
             /* Espaço entre os elementos na linha */
-            margin-bottom: 10px;
+            margin-bottom: 40px;
             /* Espaço abaixo da linha */
         }
 
