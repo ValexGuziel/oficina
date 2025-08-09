@@ -146,11 +146,11 @@ $result = $conn->query($sql_select);
 
     /* **Estilo para o botão de voltar** */
     .back-button {
-      background-color: #6c757d;
+      background-color: #007bff;
       color: white;
       padding: 10px 15px;
-      border: 1px solid #5a6268;
-      border-radius: 4px;
+      border: 1px solid #0056b3;
+      border-radius: 30px;
       cursor: pointer;
       font-size: 16px;
       box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
@@ -162,8 +162,45 @@ $result = $conn->query($sql_select);
       /* Espaço acima */
     }
 
+
+
+
     .back-button:hover {
-      background-color: #5a6268;
+      background-color: #0056b3;
+    }
+
+    /* style.css */
+
+    .footer {
+      /* Define o layout Flexbox para o rodapé */
+      display: flex;
+      /* Alinha os itens horizontalmente ao centro */
+      justify-content: center;
+      /* Alinha os itens verticalmente ao centro (opcional) */
+      align-items: center;
+
+      /* Estilização básica */
+      background-color: #000000ff;
+      /* Cor de fundo escura */
+      color: white;
+      /* Cor do texto branca */
+      padding: 20px;
+      /* Espaçamento interno */
+      font-size: 14px;
+      /* Tamanho da fonte */
+
+      /* Para que o rodapé fique no final da página (opcional, dependendo do layout) */
+      max-width: 100vw;
+      /* Se a página for muito pequena, o rodapé pode não ficar no final. Para corrigir isso, você pode usar: */
+      /* position: fixed; */
+      /* bottom: 0; */
+      border-radius: 8px;
+    }
+
+    /* Opcional: Estilo para os parágrafos dentro do rodapé */
+    .footer p {
+      margin: 0 10px;
+      /* Adiciona um espaço entre os parágrafos */
     }
   </style>
 </head>
@@ -249,8 +286,13 @@ $result = $conn->query($sql_select);
       <p>Nenhuma solicitação de serviço registrada ainda.</p>
     <?php endif; ?>
 
-    <a href="index.php" class="back-button">Voltar para o Formulário</a>
+    <a href="index.php" class="back-button">Voltar para o Início</a>
+
   </div>
+  <footer class="footer">
+    <p>&copy; 2025 Mastig. Todos os direitos reservados.</p>
+    <p>Desenvolvido por Claudio R. Ramos</p>
+  </footer>
 </body>
 
 </html>

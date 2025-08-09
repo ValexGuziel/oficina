@@ -22,30 +22,34 @@ include 'conexao.php';
     <style>
         body {
             font-family: "Roboto", sans-serif;
+            font-size: 20px;
             margin: 20px;
             background-color: #3b387bff;
         }
 
         .container {
             max-width: 80vw;
-            height: 80vh;
+            height: 55vh;
             margin: auto;
-            background: #ffffffff;
+            background: #f1efefff;
             padding: 50px;
             border-radius: 8px;
-
-
+            border: 1px solid rgba(0, 0, 0, 0.4)
         }
 
         h1 {
             text-align: center;
-            border-bottom: 1px solid #818080ff;
-            color: #000000;
+            color: rgba(0, 0, 0, 1);
+            text-shadow:
+                -1px -1px 0 rgba(255, 166, 1, 1),
+                1px -1px 0 rgba(255, 166, 1, 1),
+                -1px 1px 0 rgba(255, 166, 1, 1),
+                1px 1px 0 rgba(255, 166, 1, 1);
         }
 
 
         h2 {
-            color: #000000;
+            color: #000000ff;
 
         }
 
@@ -71,11 +75,12 @@ include 'conexao.php';
         select {
             text-transform: uppercase;
             width: calc(100% - 22px);
+            height: auto;
             padding: 10px;
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            background-color: rgba(185, 182, 221, 0.5);
+            background-color: rgba(255, 255, 255, 0.5);
             box-shadow: 3px 3px 8px rgba(10, 1, 61, 0.4);
         }
 
@@ -87,7 +92,7 @@ include 'conexao.php';
             margin-bottom: 10px;
             border: 1px solid #ddd;
             border-radius: 4px;
-            background-color: rgba(185, 182, 221, 0.5);
+            background-color: rgba(255, 255, 255, 0.5);
             box-shadow: 3px 3px 8px rgba(10, 1, 61, 0.4);
         }
 
@@ -96,8 +101,7 @@ include 'conexao.php';
             color: white;
             padding: 10px 15px;
             border: 1px solid #114b0eff;
-            border-radius: 4px;
-            cursor: pointer;
+            border-radius: 30px;
             font-size: 16px;
             box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
             /* Sombra: offset-x, offset-y, blur-radius, color */
@@ -138,14 +142,13 @@ include 'conexao.php';
             /* Remove a margem inferior padrão do input */
         }
 
-        /* **Estilo para o novo botão de ver solicitações** */
+
         .view-solicitacoes-button {
             background-color: #007bff;
-            /* Cor azul para destaque */
             color: white;
             padding: 10px 15px;
             border: 1px solid #0056b3;
-            border-radius: 4px;
+            border-radius: 30px;
             cursor: pointer;
             font-size: 16px;
             box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
@@ -153,41 +156,101 @@ include 'conexao.php';
             /* Para parecer um botão */
             display: inline-block;
             /* Para o padding funcionar */
-            /* **Removido margin-top para ficar na mesma linha** */
+
         }
 
         .view-solicitacoes-button:hover {
             background-color: #0056b3;
         }
+
+        .container_1 img {
+            width: 150px;
+            height: 150px;
+        }
+
+        .container_1 {
+            display: flex;
+            max-width: 80vw;
+            height: 55px;
+            align-items: center;
+            /* Alinha os itens verticalmente ao centro */
+            gap: 100px;
+            /* Adiciona um espaço entre os itens */
+            margin: auto;
+            background: #f1efefff;
+            padding: 50px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.4)
+        }
+
+        .aviso {
+            padding-left: 40px;
+            font-size: 10px;
+            color: #860101ff;
+        }
+
+        .footer {
+            /* Define o layout Flexbox para o rodapé */
+            display: flex;
+            /* Alinha os itens horizontalmente ao centro */
+            justify-content: center;
+            /* Alinha os itens verticalmente ao centro (opcional) */
+            align-items: center;
+
+            /* Estilização básica */
+            background-color: #000000ff;
+            /* Cor de fundo escura */
+            color: white;
+            /* Cor do texto branca */
+            padding: 0px;
+            /* Espaçamento interno */
+            font-size: 14px;
+            /* Tamanho da fonte */
+
+            /* Para que o rodapé fique no final da página (opcional, dependendo do layout) */
+            max-width: 87vw;
+            /* Se a página for muito pequena, o rodapé pode não ficar no final. Para corrigir isso, você pode usar: */
+            /* position: fixed; */
+            /* bottom: 0; */
+            border-radius: 8px;
+            margin: auto;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container_1">
+        <img src="logo_mastig.png" alt="Logo da Mastig">
         <h1>Solicitação de Serviço de Manutenção</h1>
+        <img src="chave.jpg" alt="Chave de boca">
+    </div>
+
+    <div class="container">
 
         <?php
         if (isset($_GET['status'])) {
             if ($_GET['status'] == 'success_add') {
-                echo '<p style="color: green;">Ordem de Serviço adicionada com sucesso!</p>';
+                echo '<p style="color: green;" class="flash-message success">Ordem de Serviço adicionada com sucesso!</p>';
             } elseif ($_GET['status'] == 'success_update') {
-                echo '<p style="color: green;">Ordem de Serviço atualizada com sucesso!</p>';
+                echo '<p style="color: green;" class="flash-message success">Ordem de Serviço atualizada com sucesso!</p>';
             } elseif ($_GET['status'] == 'success_delete') {
-                echo '<p style="color: red;">Ordem de Serviço excluída com sucesso!</p>';
+                echo '<p style="color: red;" class="flash-message error>Ordem de Serviço excluída com sucesso!</p>';
             } elseif ($_GET['status'] == 'error') {
-                echo '<p style="color: red;">Ocorreu um erro na operação.</p>';
+                echo '<p style="color: red;" class="flash-message error>Ocorreu um erro na operação.</p>';
             }
         }
         ?>
 
-        <h2>Nova Solicitação de Serviço</h2>
+
         <form action="processar_os.php" method="POST">
+
             <div class="form-row">
                 <label for="cliente">Solicitante:</label>
                 <input type="text" id="cliente" name="cliente" required>
 
                 <label for="setor">Setor:</label>
                 <input type="text" id="setor" name="setor" required>
+
             </div>
 
             <div class="form-row">
@@ -206,15 +269,40 @@ include 'conexao.php';
             <label for="descricao_problema">Descrição do Problema:</label>
             <textarea id="descricao_problema" name="descricao_problema" rows="4" required></textarea>
 
-            <button type="submit" name="acao" value="adicionar">Abrir Solicitação de Serviços</button>
-            <a href="lista_os.php" class="view-solicitacoes-button">Ver Solicitações Atuais</a>
+            <button type="submit" name="acao" value="adicionar">Abrir Solicitação</button>
+            <a href="lista_os.php" class="view-solicitacoes-button">Ver Solicitações</a>
+            <p class="aviso"> * A data de emissão e adicionada automaticamente</p>
 
         </form>
 
     </div>
+
+    <script>
+        // Seleciona todas as mensagens com a classe 'flash-message'
+        const flashMessages = document.querySelectorAll('.flash-message');
+
+        // Verifica se existem mensagens
+        if (flashMessages.length > 0) {
+            // Itera sobre cada mensagem encontrada
+            flashMessages.forEach(function (message) {
+                // Usa setTimeout para agendar uma ação para 5 segundos no futuro
+                setTimeout(function () {
+                    // Remove a mensagem do DOM (da página)
+                    message.remove();
+                }, 5000); // 5000 milissegundos = 5 segundos
+            });
+        }
+    </script>
+
+    <footer class="footer">
+        <p>&copy; 2025 Mastig. Todos os direitos reservados.</p>
+        <p>Desenvolvido por Claudio R. Ramos</p>
+    </footer>
+
 </body>
 
 </html>
+
 
 <?php
 // Fecha a conexão com o banco de dados
