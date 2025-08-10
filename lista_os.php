@@ -19,6 +19,7 @@ $result = $conn->query($sql_select);
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
     rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <title>Lista de Solicitações de Serviço</title>
   <style>
     body {
@@ -201,6 +202,29 @@ $result = $conn->query($sql_select);
       margin: 0 10px;
       /* Adiciona um espaço entre os parágrafos */
     }
+
+    /* Cor dos Icones */
+    .fa-pen {
+      color: #007bff;
+      /* Azul */
+    }
+
+    .fa-trash {
+      color: #dc3545;
+      /* Vermelho */
+    }
+
+    .fa-print {
+      color: #28a745;
+      /* Verde */
+    }
+
+    /* Exemplo de efeito ao passar o mouse */
+    a i:hover {
+      transform: scale(1.2);
+      /* Aumenta o ícone em 20% */
+      transition: transform 0.2s ease-in-out;
+    }
   </style>
 </head>
 
@@ -272,10 +296,16 @@ $result = $conn->query($sql_select);
                   </select>
                   <input type="hidden" name="acao" value="atualizar_status">
                 </form>
-                <a href="editar_os.php?id=<?php echo $row['id']; ?>">Editar</a>
+
+                <a href="editar_os.php?id=<?php echo $row['id']; ?>" title="Editar"><i class="fa-solid fa-pen"></i>
+                </a></a>
                 <a href="processar_os.php?acao=excluir&id=<?php echo $row['id']; ?>" class="delete-btn"
-                  onclick="return confirm('Tem certeza que deseja excluir esta Ordem de Serviço?');">Excluir</a>
-                <a href="imprimir_os.php?id=<?php echo $row['id']; ?>" target="_blank">Imprimir</a>
+                  onclick="return confirm('Tem certeza que deseja excluir esta Ordem de Serviço?');" title="Excluir"><i
+                    class="fa-solid fa-trash"></i>
+                </a></a>
+                <a href="imprimir_os.php?id=<?php echo $row['id']; ?>" target="_blank" title="Imprimir"><i
+                    class="fa-solid fa-print"></i>
+                </a></a>
               </td>
             </tr>
           <?php endwhile; ?>

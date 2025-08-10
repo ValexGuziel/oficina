@@ -22,7 +22,7 @@ include 'conexao.php';
     <style>
         body {
             font-family: "Roboto", sans-serif;
-            font-size: 20px;
+            font-size: 14px;
             margin: 20px;
             background-color: #3b387bff;
         }
@@ -164,15 +164,16 @@ include 'conexao.php';
         }
 
         .container_1 img {
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 80px;
         }
 
         .container_1 {
             display: flex;
             max-width: 80vw;
-            height: 55px;
+            height: 30px;
             align-items: center;
+            justify-content: space-around;
             /* Alinha os itens verticalmente ao centro */
             gap: 100px;
             /* Adiciona um espaço entre os itens */
@@ -183,11 +184,6 @@ include 'conexao.php';
             border: 1px solid rgba(0, 0, 0, 0.4)
         }
 
-        .aviso {
-            padding-left: 40px;
-            font-size: 10px;
-            color: #860101ff;
-        }
 
         .footer {
             /* Define o layout Flexbox para o rodapé */
@@ -232,19 +228,7 @@ include 'conexao.php';
 
     <div class="container">
 
-        <?php
-        if (isset($_GET['status'])) {
-            if ($_GET['status'] == 'success_add') {
-                echo '<p style="color: green;" class="flash-message success">Ordem de Serviço adicionada com sucesso!</p>';
-            } elseif ($_GET['status'] == 'success_update') {
-                echo '<p style="color: green;" class="flash-message success">Ordem de Serviço atualizada com sucesso!</p>';
-            } elseif ($_GET['status'] == 'success_delete') {
-                echo '<p style="color: red;" class="flash-message error>Ordem de Serviço excluída com sucesso!</p>';
-            } elseif ($_GET['status'] == 'error') {
-                echo '<p style="color: red;" class="flash-message error>Ocorreu um erro na operação.</p>';
-            }
-        }
-        ?>
+
 
 
         <form action="processar_os.php" method="POST">
@@ -276,9 +260,23 @@ include 'conexao.php';
 
             <button type="submit" name="acao" value="adicionar">Abrir Solicitação</button>
             <a href="lista_os.php" class="view-solicitacoes-button">Ver Solicitações</a>
-            <p class="aviso"> * A data de emissão e adicionada automaticamente</p>
+
 
         </form>
+
+        <?php
+        if (isset($_GET['status'])) {
+            if ($_GET['status'] == 'success_add') {
+                echo '<p style="color: green;" class="flash-message success">Ordem de Serviço adicionada com sucesso!</p>';
+            } elseif ($_GET['status'] == 'success_update') {
+                echo '<p style="color: green;" class="flash-message success">Ordem de Serviço atualizada com sucesso!</p>';
+            } elseif ($_GET['status'] == 'success_delete') {
+                echo '<p style="color: red;" class="flash-message error>Ordem de Serviço excluída com sucesso!</p>';
+            } elseif ($_GET['status'] == 'error') {
+                echo '<p style="color: red;" class="flash-message error>Ocorreu um erro na operação.</p>';
+            }
+        }
+        ?>
 
     </div>
 

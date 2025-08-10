@@ -44,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
                 $update_sql .= " WHERE id = $id_os";
 
                 if ($conn->query($update_sql) === TRUE) {
-                    header("Location: index.php?status=success_update");
+                    header("Location: lista_os.php?status=success_update");
                 } else {
                     header("Location: index.php?status=error&message=" . urlencode($conn->error));
                 }
@@ -85,7 +85,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
                 $update_sql .= " WHERE id = $id_os";
 
                 if ($conn->query($update_sql) === TRUE) {
-                    header("Location: index.php?status=success_update");
+                    header("Location: lista_os.php?status=success_update");
                 } else {
                     header("Location: index.php?status=error&message=" . urlencode($conn->error));
                 }
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" || (isset($_GET['acao']) && $_GET['acao
                 $sql_delete = "DELETE FROM ordens_servico WHERE id = $id_os";
 
                 if ($conn->query($sql_delete) === TRUE) {
-                    header("Location: index.php?status=success_delete");
+                    header("Location: lista_os.php?status=success_delete");
                 } else {
                     header("Location: index.php?status=error&message=" . urlencode($conn->error));
                 }
