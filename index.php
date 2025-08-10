@@ -202,18 +202,23 @@ include 'conexao.php';
             /* Cor de fundo escura */
             color: white;
             /* Cor do texto branca */
-            padding: 0px;
+            padding: 15px;
             /* Espaçamento interno */
             font-size: 14px;
             /* Tamanho da fonte */
 
             /* Para que o rodapé fique no final da página (opcional, dependendo do layout) */
-            max-width: 87vw;
+            max-width: 85vw;
             /* Se a página for muito pequena, o rodapé pode não ficar no final. Para corrigir isso, você pode usar: */
-            /* position: fixed; */
-            /* bottom: 0; */
+            position: static;
             border-radius: 8px;
             margin: auto;
+
+        }
+
+        .footer p {
+            margin: 0 10px;
+            /* Adiciona um espaço entre os parágrafos */
         }
     </style>
 </head>

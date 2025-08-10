@@ -184,7 +184,7 @@ $result = $conn->query($sql_select);
       /* Cor de fundo escura */
       color: white;
       /* Cor do texto branca */
-      padding: 20px;
+      padding: 15px;
       /* Espaçamento interno */
       font-size: 14px;
       /* Tamanho da fonte */
@@ -192,8 +192,7 @@ $result = $conn->query($sql_select);
       /* Para que o rodapé fique no final da página (opcional, dependendo do layout) */
       max-width: 100vw;
       /* Se a página for muito pequena, o rodapé pode não ficar no final. Para corrigir isso, você pode usar: */
-      /* position: fixed; */
-      /* bottom: 0; */
+      /*position: fixed;*/
       border-radius: 8px;
     }
 
