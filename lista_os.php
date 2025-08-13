@@ -318,10 +318,7 @@ $result = $conn->query($sql_select);
     <a href="index.php" class="back-button">Voltar para o Início</a>
 
   </div>
-  <footer class="footer">
-    <p>&copy; 2025 Mastig. Todos os direitos reservados.</p>
-    <p>Desenvolvido por Claudio R. Ramos</p>
-  </footer>
+
 </body>
 
 </html>
