@@ -163,9 +163,6 @@ $result = $conn->query($sql_select);
       /* Espaço acima */
     }
 
-
-
-
     .back-button:hover {
       background-color: #0056b3;
     }
@@ -225,6 +222,31 @@ $result = $conn->query($sql_select);
       /* Aumenta o ícone em 20% */
       transition: transform 0.2s ease-in-out;
     }
+
+    /* Classes de cores para a prioridade (adicionadas) */
+    .prioridade-baixa {
+      background-color: #389e2fff;
+      /* Branco */
+      color: #000000;
+    }
+
+    .prioridade-media {
+      background-color: #ffc107;
+      /* Amarelo */
+      color: #000000;
+    }
+
+    .prioridade-alta {
+      background-color: #fd7e14;
+      /* Laranja */
+      color: #000000;
+    }
+
+    .prioridade-urgente {
+      background-color: #ac0b1bff;
+      /* Vermelho */
+      color: #ffffff;
+    }
   </style>
 </head>
 
@@ -264,12 +286,33 @@ $result = $conn->query($sql_select);
         </thead>
         <tbody>
           <?php while ($row = $result->fetch_assoc()): ?>
+            <?php
+            // Lógica para definir a classe CSS da prioridade
+            $prioridade_class = '';
+            switch (strtoupper($row['prioridade'])) {
+              case 'BAIXA':
+                $prioridade_class = 'prioridade-baixa';
+                break;
+              case 'MÉDIA':
+                $prioridade_class = 'prioridade-media';
+                break;
+              case 'ALTA':
+                $prioridade_class = 'prioridade-alta';
+                break;
+              case 'URGENTE':
+                $prioridade_class = 'prioridade-urgente';
+                break;
+              default:
+                $prioridade_class = '';
+                break;
+            }
+            ?>
             <tr>
               <td><?php echo $row['id']; ?></td>
               <td><?php echo htmlspecialchars($row['cliente']); ?></td>
               <td><?php echo htmlspecialchars($row['setor'] ?? 'N/A'); ?></td>
               <td><?php echo htmlspecialchars($row['equipamento']); ?></td>
-              <td><?php echo htmlspecialchars($row['prioridade'] ?? 'N/A'); ?></td>
+              <td class="<?php echo $prioridade_class; ?>"><?php echo htmlspecialchars($row['prioridade'] ?? 'N/A'); ?></td>
               <td><?php echo htmlspecialchars($row['descricao_problema']); ?></td>
               <td class="status-<?php echo strtolower(str_replace(' ', '-', $row['status'])); ?>">
                 <?php echo $row['status']; ?>
@@ -298,14 +341,14 @@ $result = $conn->query($sql_select);
                 </form>
 
                 <a href="editar_os.php?id=<?php echo $row['id']; ?>" title="Editar"><i class="fa-solid fa-pen"></i>
-                </a></a>
+                </a>
                 <a href="processar_os.php?acao=excluir&id=<?php echo $row['id']; ?>" class="delete-btn"
                   onclick="return confirm('Tem certeza que deseja excluir esta Ordem de Serviço?');" title="Excluir"><i
                     class="fa-solid fa-trash"></i>
-                </a></a>
+                </a>
                 <a href="imprimir_os.php?id=<?php echo $row['id']; ?>" target="_blank" title="Imprimir"><i
                     class="fa-solid fa-print"></i>
-                </a></a>
+
               </td>
             </tr>
           <?php endwhile; ?>
